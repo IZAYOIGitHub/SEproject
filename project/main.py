@@ -1,7 +1,12 @@
-import sys, os
-import gadget, sudoku_generator, sudoku_solver
+#!python3
 
-def main(){
+import sys, os
+from gadget import *
+from sudoku_generator import *
+from sudoku_solver import *
+
+
+def main():
 
     if len(sys.argv) != 3:
         die()
@@ -11,8 +16,6 @@ def main(){
         solve(sys.argv[2])
     else:
         die()
-
-}
 
 if __name__ == "__main__":
     main()
