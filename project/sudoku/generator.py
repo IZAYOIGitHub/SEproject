@@ -1,9 +1,8 @@
-import gadget, itertools
+import itertools, sys
 
 shift = [0, 3, 6, 1, 4, 7, 2, 5, 8]
 row_iter = itertools.permutations('12345789',8)
 sudoku_array = []
-num = 0
 
 def generate(sum):
 
@@ -13,7 +12,7 @@ def generate(sum):
         sum = int(sum)
     except TypeError:
         print("Parameter type error!")
-        die()
+        sys.exit()
 
     for i_first_row in range(40320):
 
@@ -49,9 +48,4 @@ def generate(sum):
                  
 if __name__ == "__main__":
     generate('10000')
-    for i in sudoku_array:
-        for j in i:
-            for k in j:
-                print(k, end='')
-            print('')
-        print('\n')
+    

@@ -1,9 +1,7 @@
 #!python3
 
 import sys, os
-from gadget import *
-from sudoku_generator import *
-from sudoku_solver import *
+import sudoku
 
 
 def main():
