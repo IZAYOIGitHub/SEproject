@@ -49,6 +49,7 @@ def solve_one(string):
     for i in data:
         for j in i:
             out_str += str(j)+' '
+        out_str = out_str[0:-1]
         out_str += '\n'
     out_str += '\n'
     return out_str
