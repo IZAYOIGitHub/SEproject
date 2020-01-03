@@ -16,15 +16,11 @@ def die():
 
 
 def main():
-
-
     if len(sys.argv) != 3:
         die()
 
 
-
     if sys.argv[1] == "-c":
-
         try:
             sum = int(sys.argv[2])
         except TypeError:
@@ -36,9 +32,7 @@ def main():
         output_file.close()
 
         
-
     elif sys.argv[1] == "-s":
-
         try:
             puzzle_file = open(sys.argv[2], 'r')
         except:
@@ -48,7 +42,6 @@ def main():
         sudoku_solved = ''
         while(True):
             sudoku_puzzle = ''
-
             every_first_line = puzzle_file.readline()[0:-1]
 
             if every_first_line != '':
@@ -65,14 +58,8 @@ def main():
                 sys.exit()
             
 
-
-
-
     else:
         die()
-
-
-
 
 
 if __name__ == "__main__":
