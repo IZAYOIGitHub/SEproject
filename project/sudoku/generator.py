@@ -41,13 +41,13 @@ def generate_list_3d(sum):
 
 
 def transform(list_3d):
-    str = ''
+    out_str = ''
     for i in list_3d:
         for j in i:
-            str += ' '.join(j)
-            str += '\n'
-        str += '\n'
-    return str
+            out_str += ' '.join(j)
+            out_str += '\n'
+        out_str += '\n'
+    return out_str
 
 
 if __name__ == "__main__":

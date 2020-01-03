@@ -3,11 +3,10 @@ import sys, numpy
 sudoku_solved_array = []
 
 def nine(data):
-    nine_block = np.zeros([3,3,3,3], dtype = int)
+    nine_block = numpy.zeros([3,3,3,3], dtype = int)
     for i in range(3):
         for j in range(3):
             nine_block[i,j] = data[3*i:3*(i+1),3*j:3*(j+1)]
-    print(nine_block)
     return nine_block
 
 def num_set(data, nine_block):
@@ -15,13 +14,13 @@ def num_set(data, nine_block):
     for i in range(9):
         for j in range(9):
             if data[i,j] == 0:
-                pick_set[str(i)+str(j)] = set(np.array(range(10))) - \
+                pick_set[str(i)+str(j)] = set(numpy.array(range(10))) - \
                 (set(data[i,:]) | set(data[:,j]) | \
                 set(nine_block[i//3,j//3].ravel()))
     return pick_set
 
 def solve_one(string):    
-    data = numpy.array(string.split(), dtypr = int).reshape((9,9))
+    data = numpy.array(string.split(), dtype = int).reshape((9,9))
     insert_step = []
     while True:
         pick_set = num_set(data, nine(data))
@@ -45,24 +44,12 @@ def solve_one(string):
                     data[int(key[0]), int(key[1])] = insert_num[1]
                     insert_step.append((key, insert_num[1:]))
                     break
-    return data 
 
+    out_str = ''
+    for i in data:
+        for j in i:
+            out_str += str(j)+' '
+        out_str += '\n'
+    out_str += '\n'
+    return out_str
 
-# def solve(path):
-    
-    
-
-#     while True:
-
-#         sudoku_puzzle = ''
-#         for row_i in range(9):
-#             try:
-#                 sudoku_puzzle += puzzle_file.readline()[0:-1]
-#                 sudoku_puzzle += ' '
-#             except EOFError:
-#                 break
-#         sudoku_puzzle = 
-#         sudoku_solved = solve_one(sudoku_puzzle)
-#         sudoku_solved_array.append(soduku_solved.copy())
-
-#     return sudoku_solved_array

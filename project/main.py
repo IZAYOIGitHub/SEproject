@@ -7,10 +7,10 @@ from sudoku.solver import *
 
 
 def die():
-    print("usage: .\sudoku.exe [-c] [-s]")
+    print("usage: .\main.py [-c] [-s] <parameter>")
     print("Options and arguments (and corresponding environment variables):")
     print("-c      num    : set the quantity of sudoku-endgames generated, export the result to sudoku.txt")
-    print("-s      puzzle : settle the sudoku question stored in file puzzle, export the result to sudoku.txt")
+    print("-s      puzzle : settle the sudoku question stored in file puzzle, export the result to sudoku.txt\n")
     sys.exit()
 
 
@@ -33,6 +33,7 @@ def main():
 
         output_file = open("./sudoku.txt", 'w')
         output_file.write(transform(generate_list_3d(sum)))
+        output_file.close()
 
         
 
@@ -42,22 +43,27 @@ def main():
             puzzle_file = open(sys.argv[2], 'r')
         except:
             print("Invalid path!")
-            sys.exit()
+            die()
 
-            while(True):
-                sudoku_puzzle = ''
-                sudoku_solved = ''
+        sudoku_solved = ''
+        while(True):
+            sudoku_puzzle = ''
 
-                for row_i in range(9):
-                    try:
-                        sudoku_puzzle += puzzle_file.readline()[0:-1]
-                        sudoku_puzzle += ' '
-                    except EOFError:
-                        output_file = open("./sudoku.txt", 'w')
-                        output_file.write(sudoku_solved)
-                        sys.exit()
+            every_first_line = puzzle_file.readline()[0:-1]
 
+            if every_first_line != '':
+                sudoku_puzzle += every_first_line+' '
+                for i in range(8):
+                    sudoku_puzzle += puzzle_file.readline()[0:-1]+' '
+                puzzle_file.readline()
                 sudoku_solved += solve_one(sudoku_puzzle)
+
+            else:
+                output_file = open("./sudoku.txt", 'w')
+                output_file.write(sudoku_solved)
+                puzzle_file.close()
+                sys.exit()
+            
 
 
 
