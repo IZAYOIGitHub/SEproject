@@ -4,15 +4,9 @@ shift = [0, 3, 6, 1, 4, 7, 2, 5, 8]
 row_iter = itertools.permutations('12345789',8)
 sudoku_array = []
 
-def generate(sum):
+def generate_list_3d(sum):
 
     num = 0
-    
-    try:
-        sum = int(sum)
-    except TypeError:
-        print("Parameter type error!")
-        sys.exit()
 
     for i_first_row in range(40320):
 
@@ -44,8 +38,18 @@ def generate(sum):
 
                 if num >= sum:
                     return sudoku_array
-                
-                 
+
+
+def transform(list_3d):
+    str = ''
+    for i in list_3d:
+        for j in i:
+            str += ' '.join(j)
+            str += '\n'
+        str += '\n'
+    return str
+
+
 if __name__ == "__main__":
-    generate('10000')
+    print(transform(generate_list_3d(1000))) # test only
     

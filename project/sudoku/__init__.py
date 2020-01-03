@@ -1,1 +1,1 @@
-__all__ = ['gadget.py', 'generator.py', 'solver.py']
+__all__ = ['generator.py', 'solver.py']

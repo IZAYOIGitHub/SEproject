@@ -1,5 +1,4 @@
-import sys
-import numpy
+import sys, numpy
 
 sudoku_solved_array = []
 
@@ -21,7 +20,8 @@ def num_set(data, nine_block):
                 set(nine_block[i//3,j//3].ravel()))
     return pick_set
 
-def solve_one(data):    
+def solve_one(string):    
+    data = numpy.array(string.split(), dtypr = int).reshape((9,9))
     insert_step = []
     while True:
         pick_set = num_set(data, nine(data))
@@ -48,25 +48,21 @@ def solve_one(data):
     return data 
 
 
-def solve(path):
+# def solve(path):
     
-    try:
-        puzzle_file = open(path, 'r')
-    except:
-        print("Invalid path!")
-        sys.exit()
+    
 
-    while True:
+#     while True:
 
-        sudoku_puzzle = ''
-        for row_i in range(9):
-            try:
-                sudoku_puzzle += puzzle_file.readline()[0:-1]
-                sudoku_puzzle += ' '
-            except EOFError:
-                break
-        sudoku_puzzle = numpy.array(sudoku_puzzle.split(), dtypr = int).reshape((9,9))
-        sudoku_solved = solve_one(sudoku_puzzle)
-        sudoku_solved_array.append(soduku_solved.copy())
+#         sudoku_puzzle = ''
+#         for row_i in range(9):
+#             try:
+#                 sudoku_puzzle += puzzle_file.readline()[0:-1]
+#                 sudoku_puzzle += ' '
+#             except EOFError:
+#                 break
+#         sudoku_puzzle = 
+#         sudoku_solved = solve_one(sudoku_puzzle)
+#         sudoku_solved_array.append(soduku_solved.copy())
 
-    return sudoku_solved_array
+#     return sudoku_solved_array
