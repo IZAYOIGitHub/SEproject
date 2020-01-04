@@ -1,8 +1,6 @@
 import sys, numpy
 
-sudoku_solved_array = []
-
-def nine(data):
+def split_nine(data): # 拆分9×9数独为9个3×3
     nine_block = numpy.zeros([3,3,3,3], dtype = int)
     for i in range(3):
         for j in range(3):
@@ -19,11 +17,11 @@ def num_set(data, nine_block):
                 set(nine_block[i//3,j//3].ravel()))
     return pick_set
 
-def solve_one(string):    
+def solve_one(string): # 对一个数独谜题进行回溯法求解
     data = numpy.array(string.split(), dtype = int).reshape((9,9))
     insert_step = []
     while True:
-        pick_set = num_set(data, nine(data))
+        pick_set = num_set(data, split_nine(data))
         if len(pick_set) == 0: break
         pick_sort = sorted(pick_set.items(), key = lambda x:len(x[1]))
         item_min = pick_sort[0]
