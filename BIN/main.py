@@ -23,7 +23,7 @@ def main():
     if sys.argv[1] == "-c":
         try:
             sum = int(sys.argv[2])
-        except TypeError:
+        except:
             print("Parameter type error!")
             die()
 
